@@ -1,0 +1,9 @@
+{
+"name":"Rennrad Coach",
+"short_name":"Rennrad Coach",
+"start_url":"./",
+"display":"standalone",
+"background_color":"#2b2b2b",
+"theme_color":"#ff7a00",
+"icons":[]
+}
