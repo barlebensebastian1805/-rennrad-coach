@@ -273,7 +273,35 @@ document.getElementById(
 "hoehenmeter"
 ).value
 );
+let training = JSON.parse(
+localStorage.getItem(
+"training"
+) || "[]"
+);
 
+training.push({
+
+datum:
+document.getElementById(
+"datum"
+).value,
+
+sportart:
+document.getElementById(
+"sportart"
+).value,
+
+km: km,
+hm: hm
+
+});
+
+localStorage.setItem(
+"training",
+JSON.stringify(
+training
+)
+);
 let gesamtKm =
 Number(
 localStorage.getItem(
