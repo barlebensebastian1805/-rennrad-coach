@@ -411,7 +411,33 @@ Math.min(
 hm / 40000 * 100,
 100
 ) + "%";
+let training = JSON.parse(
+    localStorage.getItem("training") || "[]"
+);
 
+let historieHtml = "";
+
+training.forEach(function(eintrag){
+
+    historieHtml += `
+    <div style="
+        padding:10px;
+        margin-bottom:10px;
+        background:#3a3a3a;
+        border-radius:10px;
+    ">
+        <strong>${eintrag.datum}</strong><br>
+        ${eintrag.sportart}<br>
+        ${eintrag.km} km | ${eintrag.hm} hm
+    </div>
+    `;
+
+});
+
+if(training.length > 0){
+    document.getElementById("historie").innerHTML =
+        historieHtml;
+}
 };
 
 </script>
