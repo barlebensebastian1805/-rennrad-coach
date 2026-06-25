@@ -234,3 +234,150 @@ aktualisieren();
 
 </body>
 </html>
+<div class="card">
+
+<h2>Training erfassen</h2>
+
+<label>Datum</label>
+<input type="date" id="datum">
+
+<label>Sportart</label>
+<select id="sportart">
+<option>Rennrad</option>
+<option>Mountainbike</option>
+</select>
+
+<label>Kilometer</label>
+<input type="number" id="kilometer">
+
+<label>Höhenmeter</label>
+<input type="number" id="hoehenmeter">
+
+<button onclick="trainingSpeichern()">
+Training speichern
+</button>
+
+</div>
+
+<script>
+
+function trainingSpeichern(){
+
+let km =
+Number(
+document.getElementById(
+"kilometer"
+).value
+);
+
+let hm =
+Number(
+document.getElementById(
+"hoehenmeter"
+).value
+);
+
+let gesamtKm =
+Number(
+localStorage.getItem(
+"gesamtKm"
+)
+) || 0;
+
+let gesamtHm =
+Number(
+localStorage.getItem(
+"gesamtHm"
+)
+) || 0;
+
+gesamtKm += km;
+gesamtHm += hm;
+
+localStorage.setItem(
+"gesamtKm",
+gesamtKm
+);
+
+localStorage.setItem(
+"gesamtHm",
+gesamtHm
+);
+
+document.getElementById(
+"kmWert"
+).innerHTML =
+gesamtKm;
+
+document.getElementById(
+"hmWert"
+).innerHTML =
+gesamtHm;
+
+document.getElementById(
+"kmBar"
+).style.width =
+Math.min(
+gesamtKm / 5000 * 100,
+100
+) + "%";
+
+document.getElementById(
+"hmBar"
+).style.width =
+Math.min(
+gesamtHm / 40000 * 100,
+100
+) + "%";
+
+alert(
+"Training gespeichert"
+);
+
+}
+
+window.onload = function(){
+
+let km =
+Number(
+localStorage.getItem(
+"gesamtKm"
+)
+) || 0;
+
+let hm =
+Number(
+localStorage.getItem(
+"gesamtHm"
+)
+) || 0;
+
+document.getElementById(
+"kmWert"
+).innerHTML =
+km;
+
+document.getElementById(
+"hmWert"
+).innerHTML =
+hm;
+
+document.getElementById(
+"kmBar"
+).style.width =
+Math.min(
+km / 5000 * 100,
+100
+) + "%";
+
+document.getElementById(
+"hmBar"
+).style.width =
+Math.min(
+hm / 40000 * 100,
+100
+) + "%";
+
+};
+
+</script>
