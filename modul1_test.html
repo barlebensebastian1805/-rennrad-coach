@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Rennrad Coach</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:20px;
+    background:#1f1f1f;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+h1{
+    color:#ff7a00;
+}
+
+.card{
+    background:#2f2f2f;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.kpi{
+    background:#3a3a3a;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.kpi-title{
+    font-size:14px;
+    color:#cccccc;
+}
+
+.kpi-value{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.orange{
+    color:#ff7a00;
+}
+
+.progress{
+    background:#555;
+    height:18px;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar{
+    background:#ff7a00;
+    height:18px;
+    width:0%;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#ff7a00;
+    color:white;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🚴 Rennrad Coach</h1>
+
+<div class="dashboard">
+
+<div class="kpi">
+<div class="kpi-title">Gewicht</div>
+<div class="kpi-value" id="gewicht">82 kg</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-title">Zielgewicht</div>
+<div class="kpi-value orange">78 kg</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-title">Ruhepuls</div>
+<div class="kpi-value" id="ruhepuls">--</div>
+</div>
+
+<div class="kpi">
+<div class="kpi-title">Ampel</div>
+<div class="kpi-value" id="ampel">🟢</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Jahresziel Kilometer</h2>
+
+<p>
+<span id="kmWert">0</span> / 5000 km
+</p>
+
+<div class="progress">
+<div class="bar" id="kmBar"></div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Jahresziel Höhenmeter</h2>
+
+<p>
+<span id="hmWert">0</span> / 40000 hm
+</p>
+
+<div class="progress">
+<div class="bar" id="hmBar"></div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Körperdaten</h2>
+
+<label>Gewicht</label>
+<input type="number" id="gewichtInput">
+
+<label>Ruhepuls</label>
+<input type="number" id="ruhepulsInput">
+
+<button onclick="speichern()">
+Speichern
+</button>
+
+</div>
+
+<script>
+
+function speichern(){
+
+    let gewicht =
+    document.getElementById(
+    "gewichtInput"
+    ).value;
+
+    let ruhepuls =
+    document.getElementById(
+    "ruhepulsInput"
+    ).value;
+
+    localStorage.setItem(
+    "gewicht",
+    gewicht
+    );
+
+    localStorage.setItem(
+    "ruhepuls",
+    ruhepuls
+    );
+
+    aktualisieren();
+
+}
+
+function aktualisieren(){
+
+    let gewicht =
+    localStorage.getItem(
+    "gewicht"
+    ) || "82";
+
+    let ruhepuls =
+    localStorage.getItem(
+    "ruhepuls"
+    ) || "--";
+
+    document.getElementById(
+    "gewicht"
+    ).innerHTML =
+    gewicht + " kg";
+
+    document.getElementById(
+    "ruhepuls"
+    ).innerHTML =
+    ruhepuls;
+
+    let ampel = "🟢";
+
+    if(Number(ruhepuls) > 70){
+        ampel = "🔴";
+    }
+    else if(Number(ruhepuls) > 60){
+        ampel = "🟡";
+    }
+
+    document.getElementById(
+    "ampel"
+    ).innerHTML =
+    ampel;
+
+}
+
+aktualisieren();
+
+</script>
+
+</body>
+</html>
