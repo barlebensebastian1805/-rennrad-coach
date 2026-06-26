@@ -614,7 +614,9 @@ localStorage.getItem("intervalle") === "true";
 document.getElementById("lang").checked =
 localStorage.getItem("lang") === "true";
 
-aktualisieren();
+setTimeout(function(){
+    aktualisieren();
+},200);
 let km =
 Number(
 localStorage.getItem(
