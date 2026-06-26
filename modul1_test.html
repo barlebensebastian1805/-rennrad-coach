@@ -326,7 +326,29 @@ differenz +
 " kg bis Zielgewicht" +
 "<br><br>🎯 Ziel ca. " +
 zielDatum.toLocaleDateString("de-DE");
+let erledigt = 0;
 
+if(document.getElementById("krafttraining").checked){
+erledigt++;
+}
+
+if(document.getElementById("ga1").checked){
+erledigt++;
+}
+
+if(document.getElementById("intervalle").checked){
+erledigt++;
+}
+
+if(document.getElementById("lang").checked){
+erledigt++;
+}
+
+document.getElementById(
+"wochenfortschritt"
+).innerHTML =
+erledigt +
+" von 4 Einheiten erledigt";
 }
 else{
 
