@@ -205,7 +205,17 @@ function aktualisieren(){
     localStorage.getItem(
     "ruhepuls"
     ) || "--";
+let groesse = 1.75;
 
+let bmi =
+(
+Number(gewicht) /
+(groesse * groesse)
+).toFixed(1);
+
+document.getElementById(
+"bmiWert"
+).innerHTML = bmi;
     document.getElementById(
     "gewicht"
     ).innerHTML =
