@@ -368,6 +368,25 @@ alert(
 "Training gespeichert"
 );
 
+function trainingLoeschen(index){
+
+if(!confirm("Training wirklich löschen?")){
+return;
+}
+
+let training = JSON.parse(
+localStorage.getItem("training") || "[]"
+);
+
+training.splice(index,1);
+
+localStorage.setItem(
+"training",
+JSON.stringify(training)
+);
+
+location.reload();
+
 }
 
 window.onload = function(){
