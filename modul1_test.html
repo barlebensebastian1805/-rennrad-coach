@@ -278,7 +278,37 @@ localStorage.setItem(
 }
 
 function aktualisieren(){
+let krafttraining =
+document.getElementById("krafttraining").checked;
 
+let ga1 =
+document.getElementById("ga1").checked;
+
+let intervalle =
+document.getElementById("intervalle").checked;
+
+let lang =
+document.getElementById("lang").checked;
+
+localStorage.setItem(
+"krafttraining",
+krafttraining
+);
+
+localStorage.setItem(
+"ga1",
+ga1
+);
+
+localStorage.setItem(
+"intervalle",
+intervalle
+);
+
+localStorage.setItem(
+"lang",
+lang
+);
     let gewicht =
     localStorage.getItem(
     "gewicht"
