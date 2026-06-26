@@ -198,10 +198,30 @@ localStorage.getItem("gewichtHistorie")
 || "[]"
 );
 
+let heute =
+new Date().toLocaleDateString("de-DE");
+
+let neuesGewicht =
+document.getElementById("gewichtInput").value;
+
+let vorhandenerEintrag =
+gewichtHistorie.findIndex(
+e => e.datum === heute
+);
+
+if(vorhandenerEintrag >= 0){
+
+gewichtHistorie[vorhandenerEintrag].gewicht =
+neuesGewicht;
+
+}else{
+
 gewichtHistorie.push({
-    datum: new Date().toLocaleDateString("de-DE"),
-    gewicht: document.getElementById("gewichtInput").value
+datum: heute,
+gewicht: neuesGewicht
 });
+
+}
 
 localStorage.setItem(
     "gewichtHistorie",
