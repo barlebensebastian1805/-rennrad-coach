@@ -420,17 +420,33 @@ let historieHtml = "";
 training.forEach(function(eintrag){
 
     historieHtml += `
-    <div style="
-        padding:10px;
-        margin-bottom:10px;
-        background:#3a3a3a;
-        border-radius:10px;
-    ">
-        <strong>${eintrag.datum}</strong><br>
-        ${eintrag.sportart}<br>
-        ${eintrag.km} km | ${eintrag.hm} hm
-    </div>
-    `;
+<div style="
+padding:10px;
+margin-bottom:10px;
+background:#3a3a3a;
+border-radius:10px;
+">
+
+<strong>${eintrag.datum}</strong><br>
+${eintrag.sportart}<br>
+${eintrag.km} km | ${eintrag.hm} hm
+
+<br><br>
+
+<button onclick="trainingLoeschen(${index})"
+style="
+background:#c62828;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+">
+🗑️ Löschen
+</button>
+
+</div>
+`;
 
 });
 
