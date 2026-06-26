@@ -267,7 +267,32 @@ document.getElementById(
 gewicht +
 " kg<br>🎉 Ziel erreicht";
 
-}    
+}   
+let gewichtHistorie =
+JSON.parse(
+localStorage.getItem("gewichtHistorie")
+|| "[]"
+);
+
+let verlauf = "";
+
+gewichtHistorie
+.slice()
+.reverse()
+.forEach(function(eintrag){
+
+    verlauf +=
+    eintrag.datum +
+    " - " +
+    eintrag.gewicht +
+    " kg<br>";
+
+});
+
+document.getElementById(
+"gewichtFortschritt"
+).innerHTML +=
+"<hr>" + verlauf;    
     document.getElementById(
     "gewicht"
     ).innerHTML =
