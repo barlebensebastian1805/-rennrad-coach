@@ -572,7 +572,19 @@ location.reload();
 }
 
 window.onload = function(){
+document.getElementById("krafttraining").checked =
+localStorage.getItem("krafttraining") === "true";
 
+document.getElementById("ga1").checked =
+localStorage.getItem("ga1") === "true";
+
+document.getElementById("intervalle").checked =
+localStorage.getItem("intervalle") === "true";
+
+document.getElementById("lang").checked =
+localStorage.getItem("lang") === "true";
+
+aktualisieren();
 let km =
 Number(
 localStorage.getItem(
