@@ -189,6 +189,21 @@ function speichern(){
     document.getElementById(
     "ruhepulsInput"
     ).value;
+    let gewichtHistorie =
+JSON.parse(
+localStorage.getItem("gewichtHistorie")
+|| "[]"
+);
+
+gewichtHistorie.push({
+    datum: new Date().toLocaleDateString("de-DE"),
+    gewicht: document.getElementById("gewichtInput").value
+});
+
+localStorage.setItem(
+    "gewichtHistorie",
+    JSON.stringify(gewichtHistorie)
+);
 
     localStorage.setItem(
     "gewicht",
