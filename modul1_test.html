@@ -524,6 +524,41 @@ Math.min(
 hm / 40000 * 100,
 100
 ) + "%";
+let gewichtHistorie =
+JSON.parse(
+localStorage.getItem("gewichtHistorie")
+|| "[]"
+);
+
+let labels = [];
+let daten = [];
+
+gewichtHistorie.forEach(function(eintrag){
+labels.push(eintrag.datum);
+daten.push(eintrag.gewicht);
+});
+
+if(labels.length > 0){
+
+new Chart(
+document.getElementById("gewichtChart"),
+{
+type:"line",
+data:{
+labels: labels,
+datasets:[{
+label:"Gewicht",
+data:daten,
+tension:0.3
+}]
+},
+options:{
+responsive:true
+}
+}
+);
+
+}    
 let training = JSON.parse(
     localStorage.getItem("training") || "[]"
 );
