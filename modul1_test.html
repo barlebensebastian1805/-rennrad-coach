@@ -279,13 +279,24 @@ Number(gewicht) - zielgewicht
 
 if(differenz > 0){
 
+let wochenBisZiel = differenz / 0.5;
+
+let zielDatum = new Date();
+
+zielDatum.setDate(
+zielDatum.getDate() +
+Math.ceil(wochenBisZiel * 7)
+);
+
 document.getElementById(
 "gewichtFortschritt"
 ).innerHTML =
 gewicht +
 " kg<br>↓ " +
 differenz +
-" kg bis Zielgewicht";
+" kg bis Zielgewicht" +
+"<br><br>🎯 Ziel ca. " +
+zielDatum.toLocaleDateString("de-DE");
 
 }
 else{
