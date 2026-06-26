@@ -159,7 +159,17 @@ button{
 
 <label>Ruhepuls</label>
 <input type="number" id="ruhepulsInput">
+let groesse = 1.75;
 
+let bmi =
+(
+Number(gewicht) /
+(groesse * groesse)
+).toFixed(1);
+
+document.getElementById(
+"bmiWert"
+).innerHTML = bmi;
 <button onclick="speichern()">
 Speichern
 </button>
