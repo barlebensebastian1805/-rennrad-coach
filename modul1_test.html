@@ -220,6 +220,33 @@ Number(gewicht) /
 document.getElementById(
 "bmiWert"
 ).innerHTML = bmi;
+let zielgewicht = 78;
+
+let differenz =
+(
+Number(gewicht) - zielgewicht
+).toFixed(1);
+
+if(differenz > 0){
+
+document.getElementById(
+"gewichtFortschritt"
+).innerHTML =
+gewicht +
+" kg<br>↓ " +
+differenz +
+" kg bis Zielgewicht";
+
+}
+else{
+
+document.getElementById(
+"gewichtFortschritt"
+).innerHTML =
+gewicht +
+" kg<br>🎉 Ziel erreicht";
+
+}    
     document.getElementById(
     "gewicht"
     ).innerHTML =
