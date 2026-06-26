@@ -197,7 +197,12 @@ JSON.parse(
 localStorage.getItem("gewichtHistorie")
 || "[]"
 );
-
+gewichtHistorie = gewichtHistorie.filter(
+(eintrag,index,self)=>
+index===self.findIndex(
+t=>t.datum===eintrag.datum
+)
+);
 let heute =
 new Date().toLocaleDateString("de-DE");
 
